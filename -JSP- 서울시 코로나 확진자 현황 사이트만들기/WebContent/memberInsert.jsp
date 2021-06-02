@@ -24,7 +24,7 @@ response.setDateHeader("Expires",0);
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet" href="./css/Style.css"/>
 <style type="text/css">
 label {
 	margin-bottom: 0px;
@@ -42,10 +42,41 @@ body {
 
 </head>
 <body>
+	<nav class="navbar navbar-expand-sm">
+  <!-- Brand -->
+  <a class="navbar-brand" href="Main.jsp">COVID-19</a>
 
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="Main.jsp">메인</a>
+    </li>
+    <li class="nav-item">
+     	<a class="nav-link" href="./Tab/tab2.jsp">코로나 확진 현황</a>
+    </li>
+    <li class="nav-item">
+    	<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
+    </li>
+    <li class="nav-item">
+      		<a class="nav-link" href="survey.jsp">설문조사</a>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        접속하기
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="check/loginPage.jsp">로그인</a>
+        <a class="dropdown-item" href="memberInsert.jsp">회원가입</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<div class="jumbotron ">
 	<div class="jumbotron" align="center">
 		<header>
-			<h1 class="display-1">회원가입</h1>
+			<h3 class="display-1">회원가입</h3>
 		</header>
 
 		<form action="./check/insertMember.jsp" class='col-5'>
@@ -80,7 +111,7 @@ body {
 			<div align="left">
 			<div id="catpcha" style="display: inline"></div>
 			<input type="text" id="answer" name="answer" value="" placeholder="상자안의 숫자를 입력하세요."style="width:270px; height:60px; padding:0px; font-size:20px; border: 0px; background-color:transparent; outline:none;"/>
-       		<input id="reLoad" type="button" value="새로고침" style="display: block"/>
+       		<input id="reLoad" type="button" value="새로고침" style="display: block" class="mt-2"/>
       		
       		
       		</div>
@@ -91,7 +122,7 @@ body {
 			</div>
 		</form>
 	</div>
-	
+</div>
 	<footer align="center"><p>Copyright ⓒ By MOHW. All Rights Reserved.</p></footer>
 </body>
 

@@ -7,13 +7,13 @@
     	String num = (String)request.getParameter("num");
     	List<PostingData> content = PRD.Read(num);
     %>
-    
+ <%String ID = (String)session.getAttribute("ID"); %>  
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- style 적용 css 파일 생성했습니다 -->
-<link rel="stylesheet" href="/JSP/css/Style.css"/>
+<link rel="stylesheet" href="./css/Style.css"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,33 +23,41 @@
 <body>
 <header>
 	<nav class="navbar navbar-expand-sm">
-		<ul class="navbar-nav">
-			<li class="nav-item active">
-				<a class="nav-link" href="Main.jsp">Main</a>
-			</li>
-			<li class="nav-item">
-     			 <a class="nav-link" href="./Tab/tab2.jsp">코로나 확진 현황</a>
-    		</li>
-    		<li class="nav-item">
-    			<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
-    		</li>
-			<%
-    		String ID= (String)session.getAttribute("ID");
-    		if(ID!=null){ %>
-    		<li class="nav-item ">
-    			<a class="nav-link float-right" href="./check/logout.jsp">로그아웃</a>
-    		</li>
-    		<%} %>
-		</ul>
-	</nav>
-	<div class="jumbotron text-center">
-		<h1>이겨내자! COVID-19</h1>
-	</div>
+  <!-- Brand -->
+  	<a font-weight: bold;" class="navbar-brand" href="Main.jsp">COVID-19</a>
+
+  <!-- Links -->
+  	<ul class="navbar-nav">
+  		<li class="nav-item">
+      		<a class="nav-link" href="Main.jsp">메인</a>
+    	</li>
+    	<li class="nav-item">
+     		<a class="nav-link" href="./Tab/tab2.jsp">코로나 확진 현황</a>
+    	</li>
+    	<li class="nav-item">
+    		<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
+    	</li>
+    	 <li class="nav-item">
+      		<a class="nav-link" href="survey.jsp">설문조사</a>
+    	</li>
+    </ul>
+
+  <ul class="navbar-nav navbar-right">
+  	<li class="nav-item dropdown">
+    	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">회원관리</a>
+      	<div class="dropdown-menu">
+        	<a class="dropdown-item" href="check/logout.jsp">로그아웃</a>
+      	</div>
+    	</li>
+  </ul>
+</nav>
 	</header>
-	<div class="container">
-	<form method="POST" action="UpdateContent.jsp">
+	<div class="container mt-5">
+	<%PostingData Pdata = content.get(0); %>
+	<h2 style="color:#F2B705;"><%out.print(Pdata.getTitle());%></h2>
+	<hr>
+	<form action="UpdateContent.jsp">
 					<input type = "hidden" value="<%=num%>" id = "num" name = "num">
-					<%PostingData Pdata = content.get(0); %>
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
       						<tr>
         						<td  style="background-color:#1AD9D9; color:#142273; text-align: center;">제목</td>
@@ -70,9 +78,9 @@
 						
 				</table>
 				<%if(ID.equals(Pdata.getUserid())){%>
-					<input type="button" class = "btn" id = "update" value="수정">
-					<button class = "btn" id = "submit" style="display:none">완료</button>
-					<input type="button" class = "btn" id = "delete" value="삭제">
+					<input type="button" class = "btn btn-warning" id = "update" value="수정">
+					<button class = "btn btn-success" id = "submit" style="display:none">완료</button>
+					<input type="button" class = "btn btn-danger" id = "delete" value="삭제">
 				<%} %>
 		</form>	
 		</div>

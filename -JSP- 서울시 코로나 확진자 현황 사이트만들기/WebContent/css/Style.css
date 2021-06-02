@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
 nav{
-		background-color:#4F698C;
+		/*background-color:#DFEBF2;*/
 		font-family: 'Black Han Sans', sans-serif;
 	}
 h1{
@@ -16,11 +16,16 @@ h2{
 		font-family: 'Black Han Sans', sans-serif;
 		font-weight: bold;
 	}
-
-a{
-		color:#DFEBF2;
+nav>a{
+	color:#8878BF;
+	font-weight: bold;
+	}
+nav>ul>li>a{
+		color:#A3B5D9;
 		font-weight: bold;
 	}
+nav>a:hover{color:#D8806C;}
+nav>ul>li>a:hover{	color:#6CCED9;}
 a:hover{color:#6CCED9;}
 		
 .active {
@@ -31,7 +36,7 @@ a:hover{color:#6CCED9;}
     	margin-left: auto;
     	margin-right:auto;
     	background-image: url(../res/main.jpg);                                                               
-    	height: 546px;
+    	height: 500px;
     	width: 959px;
     
   }

@@ -15,7 +15,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- style 적용 css 파일 생성했습니다 -->
 <link rel="stylesheet" href="/JSP/css/Style.css"/>
-
+<%String ID = (String)session.getAttribute("ID");%>
   <%
     int num = 0;
     String PageNum;
@@ -32,43 +32,65 @@
 </head>
 <body>
 	<header>
-	<nav class="navbar navbar-expand-sm">
-		<ul class="navbar-nav">
-			<li class="nav-item active">
-				<a class="nav-link" href="../Main.jsp">Main</a>
-			</li>
-			<li class="nav-item">
-     			 <a class="nav-link" href="tab2.jsp">코로나 확진 현황</a>
-    		</li>
-    		<li class="nav-item">
-    			<a class="nav-link" href="NoticeBoard.jsp">국민의 소리</a>
-    		</li>
-			<%
-    		String ID= (String)session.getAttribute("ID");
-    		if(ID!=null){ %>
-    		<li class="nav-item ">
-    			<a class="nav-link float-right" href="../check/logout.jsp">로그아웃</a>
-    		</li>
-    		<%} %>
-		</ul>
-	</nav>
+<nav class="navbar navbar-expand-sm">
+  <!-- Brand -->
+  	<a font-weight: bold;" class="navbar-brand" href="../Main.jsp">COVID-19</a>
+
+  <!-- Links -->
+  	<ul class="navbar-nav">
+  		<li class="nav-item">
+      		<a class="nav-link" href="../Main.jsp">메인</a>
+    	</li>
+    	<li class="nav-item">
+     		<a class="nav-link" href="../Tab/tab2.jsp">코로나 확진 현황</a>
+    	</li>
+    	<li class="nav-item">
+    		<a class="nav-link" href="../Tab/NoticeBoard.jsp">국민의 소리</a>
+    	</li>
+    	 <li class="nav-item">
+      		<a class="nav-link" href="../survey.jsp">설문조사</a>
+    	</li>
+    </ul>
+	<!-- 로그인 안될시에 보이는 화면 -->
+    <%
+    	if(ID == null ){
+    %>
+    <!-- Dropdown -->
+    <ul class="navbar-nav navbar-right">
+    	<li class="nav-item dropdown">
+      		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">접속하기</a>
+      		<div class="dropdown-menu">
+        		<a class="dropdown-item" href="../check/login.jsp">로그인</a>
+        		<a class="dropdown-item" href="../memberInsert.jsp">회원가입</a>
+      		</div>
+    	</li>
+  	</ul>
+  <%
+  	}else{
+  %>
+  <ul class="navbar-nav navbar-right">
+  	<li class="nav-item dropdown">
+    	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">회원관리</a>
+      	<div class="dropdown-menu">
+        	<a class="dropdown-item" href="../check/logout.jsp">로그아웃</a>
+      	</div>
+    	</li>
+  </ul>
+  <%
+  	}
+   %>
+</nav>
 	</header>
 		<%if(ID==null){%>
-			<form class="form-inline ml-3 mt-3" action="../check/loginGoTab.jsp">
-				 <label for="ID">ID:</label>
-				 <input type="id" class="form-control" id="id" placeholder="아이디를 입력하세요" name="id">
-				 <label for="PWD">Password:</label> 
-				 <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요" name="pwd">
-				
-				 <button type="button" class="btn mt-2" id = "member">
-				 <img src="../Img/회원가입.JPG" width="30" height="30" class = "mr-2 img-thumbnail">회원가입</button>
-				 <button type="submit" class="btn btn-success mt-2" id ="login">로그인</button>
-			</form>
+			<script>
+			alert("로그인이 필요합니다.")
+			location.href="../check/loginPage.jsp"
+			</script>
 			<% }else{ %>
 			<div class="container" id = "reload">
 				<div class="row">
 					<table class="table table-hover" style="margin-top:50px;">
-						 <thead style="background-color:#03A6A6; color:#F2F2F2;">
+						 <thead style="background-color:#6CCED9; color:#F2F2F2;">
       						<tr>
         						<th>번호</th>
         						<th>제목</th>
@@ -100,8 +122,9 @@
 						
 						<a class = "col-1" id = "PageNumber" onclick="location.href='NoticeBoard.jsp?num='+$(this).text().replace(/ /g, '');" style="cursor:pointer;"><%out.print(i+1);%></a>
 						<%} %>
-						<a href="../write.jsp" class="btn btn-info">글쓰기</a>
+					
 				</div>
+				<div class="form-row float-right"><a href="../write.jsp" class="btn btn-primary pull-right" style="float: right;">글쓰기</a></div>
 			</div>
 			<%}%>
 			</div>

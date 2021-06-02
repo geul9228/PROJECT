@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="oneday.com.org.Accumulate"%>
+<%@page import="oneday.com.org.OneDay1" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>코로나19 현황</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -14,77 +17,113 @@
 <script type="text/javascript">
 	<%String ID = (String)session.getAttribute("ID");%>
 	history.replaceState({}, null, location.pathname); //넘겨받은 파라메터를 숨기는 구문
-	window.onload = function() {
-		<%if(ID==null){%>	//로그인 안했을때 활성화되는 버튼
-		document.getElementById('member').onclick = function() {
-			location.href = 'memberInsert.jsp';
-		}
-		
-		
-			$('#loginbtn').click(function login_from() {
-				$("#loginform").attr('style', 'display:block');
-				$("#loginbtn").attr('style', 'display:none');
-				$("#hide_loginbtn").attr('style', 'display:block');
-			})
-			
-			$('#hide_loginbtn').click(function() {
-				$("#loginform").attr('style', 'display:none');
-				$("#hide_loginbtn").attr('style', 'display:none');
-				$("#loginbtn").attr('style', 'display:block');
-			})
-		
-		<%}%>
-	}
-	
-	
 </script>
 </head>
 <body>
-	<header>
-	<nav class="navbar navbar-expand-sm">
-		<ul class="navbar-nav">
-			<li class="nav-item active">
-				<a class="nav-link" href="Main.jsp">Main</a>
-			</li>
-			<li class="nav-item">
-     			 <a class="nav-link" href="./Tab/tab2.jsp">코로나 확진 현황</a>
-    		</li>
-    		<li class="nav-item">
-    			<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
-    		</li>
-    		<li class="nav-item">
-    			<a class="nav-link" href="survey.jsp">설문조사</a>
-    		</li>
-			<%if(ID!=null){%>
-    		<li class="nav-item ">
-    			<a class="nav-link float-right" href="./check/logout.jsp">로그아웃</a>
-    		</li>
-    		<%}else{%>
-    		<li class="nav-item ">
-    		<button class="nav-link float-right btn text-primary" id="loginbtn">로그인</button>
-    		<button class="nav-link float-right btn text-primary" id="hide_loginbtn" style="display:none">로그인</button>
-    		</li>
-    		<%} %>
-		</ul>
-	</nav>
-	<div class="jumbotron text-center">
-		<h1>이겨내자! COVID-19</h1>
+
+<nav class="navbar navbar-expand-sm">
+  <!-- Brand -->
+  	<a font-weight: bold;" class="navbar-brand" href="Main.jsp">COVID-19</a>
+  <!-- Links -->
+  	<ul class="navbar-nav">
+  		<li class="nav-item">
+      		<a class="nav-link" href="Main.jsp">메인</a>
+    	</li>
+    	<li class="nav-item">
+     		<a class="nav-link" href="./Tab/tab2.jsp">코로나 확진 현황</a>
+    	</li>
+    	<li class="nav-item">
+    		<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
+    	</li>
+    	 <li class="nav-item">
+      		<a class="nav-link" href="survey.jsp">설문조사</a>
+    	</li>
+    </ul>
+	<!-- 로그인 안될시에 보이는 화면 -->
+    <%
+    	if(ID == null ){
+    %>
+    <!-- Dropdown -->
+    <ul class="navbar-nav navbar-right">
+    	<li class="nav-item dropdown">
+      		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">접속하기</a>
+      		<div class="dropdown-menu">
+        		<a class="dropdown-item" href="./check/loginPage.jsp">로그인</a>
+        		<a class="dropdown-item" href="memberInsert.jsp">회원가입</a>
+      		</div>
+    	</li>
+  	</ul>
+  <%
+  	}else{
+  %>
+  <ul class="navbar-nav navbar-right">
+  	<li class="nav-item dropdown">
+    	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">회원관리</a>
+      	<div class="dropdown-menu">
+        	<a class="dropdown-item" href="./check/logout.jsp">로그아웃</a>
+      	</div>
+    	</li>
+  </ul>
+  <%
+  	}
+   %>
+</nav>
+	<div class="img">
+        <div class="content">
+            <h1>Good Bye! COVID!</h1>
+        </div>
+        <div class="img-cover"></div>
+    </div>
+
+	<div class="liveNumOuter ml-5 mr-5">
+			<div class="liveNum_today_new">
+				<strong class="tit">일일확진자</strong>
+				<div class="datalist">
+					<ul class = "mt-3">
+						<li><span class="subtit">국내발생</span>
+						<span class="data">
+						<%OneDay1 day = new OneDay1();%>
+						<%= day.OneDay1() %>
+						</li>
+						<li><span class="subtit">해외유입</span>
+						<span class="data">
+						<%= day.OneDay2() %>
+						</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="liveNum">
+				<ul class="liveNum" style="padding:0px">
+					<li><strong class="tit">확진환자</strong> 
+					<span class="num">
+					<span class="mini">(누적)</span>
+					<%Accumulate ac1= new Accumulate();
+						ac1.Accumulate1();%>
+					<%=ac1.Accumulate1()%></span>
+					<span class="before">전일대비 
+					<%=ac1.Accumulate5() %>
+					</span></li>
+					<li><em class="sign">=</em> <strong class="tit">격리해제</strong> <span
+						class="num">
+					<%=ac1.Accumulate2()%></span> <span class="before">
+					<%=ac1.Accumulate6() %>
+					</span></li>
+					<li><em class="sign">+</em> <strong class="tit">치료 중<br>
+						<span class="mini_tit">(격리 중)</span></strong> <span class="num">
+					<%=ac1.Accumulate3() %></span>
+						<span class="before">
+					<%=ac1.Accumulate7() %>
+					</span> </li>
+					<li><em class="sign">+</em> <strong class="tit">사망</strong> <span
+						class="num">
+					<%=ac1.Accumulate4() %>
+					</span> <span class="before">
+					<%=ac1.Accumulate8() %>
+					</span></li>
+				</ul>
+			</div>
 	</div>
-	</header>
-			<div class="container col-4" style="display:none" id="loginform">
-			<%if(ID==null){%>
-			<form action="./check/login.jsp">
-				 <label for="ID">ID:</label>
-				 <input type="id" class="form-control" id="id" placeholder="아이디를 입력하세요" name="id">
-				 <label for="PWD">Password:</label> 
-				 <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력하세요" name="pwd">
-				 <button type="button" class="btn mt-2" id = "member">
-				 <img src="./res/회원가입.JPG" width="30" height="30" class = "mr-2 img-thumbnail">회원가입</button>
-				 <button type="submit" class="btn btn-success mt-2" id ="login">로그인</button>
-			</form>
-			<%}%>
-			</div> 
-			<%@ include file="./Tab/Main_tab.jsp" %>
 
 </body>
 </html>

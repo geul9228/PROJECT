@@ -1,16 +1,15 @@
 <%@page import="jsp.com.org.Posting.PostingUpdate"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 PostingUpdate update = new PostingUpdate();
 String num = request.getParameter("num");
 String content = request.getParameter("content");
-
+System.out.print(content);
 update.Update(num,content);
 %>
 
 <script>
-history.replaceState({}, null, location.pathname); //³Ñ°Ü¹ŞÀº ÆÄ¶ó¸ŞÅÍ¸¦ ¼û±â´Â ±¸¹®
-alert("¼öÁ¤¿Ï·á")
+history.replaceState({}, null, location.pathname); //ë„˜ê²¨ë°›ì€ íŒŒë¼ë©”í„°ë¥¼ ìˆ¨ê¸°ëŠ” êµ¬ë¬¸
+alert("ìˆ˜ì •ì™„ë£Œ")
 location.href="./Tab/NoticeBoard.jsp"
 </script>

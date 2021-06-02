@@ -22,17 +22,19 @@
 	%>
 	<nav class="navbar navbar-expand-sm">
   <!-- Brand -->
-  	<a class="navbar-brand" href="../Main.jsp">COVID-19</a>
-
+  	<a font-weight: bold;" class="navbar-brand" href="../Main.jsp">COVID-19</a>
   <!-- Links -->
   	<ul class="navbar-nav">
-  		<li class="nav-item active">
+  		<li class="nav-item">
       		<a class="nav-link" href="../Main.jsp">메인</a>
     	</li>
     	<li class="nav-item">
-      		<a class="nav-link" href="../Tab/NoticeBoard.jsp">게시판</a>
+     		<a class="nav-link" href="../Tab/tab2.jsp">코로나 확진 현황</a>
     	</li>
     	<li class="nav-item">
+    		<a class="nav-link" href="../Tab/NoticeBoard.jsp">국민의 소리</a>
+    	</li>
+    	 <li class="nav-item">
       		<a class="nav-link" href="../survey.jsp">설문조사</a>
     	</li>
     </ul>
@@ -45,8 +47,8 @@
     	<li class="nav-item dropdown">
       		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">접속하기</a>
       		<div class="dropdown-menu">
-        		<a class="dropdown-item" href="../login.jsp">로그인</a>
-        		<a class="dropdown-item" href="../join.jsp">회원가입</a>
+        		<a class="dropdown-item" href="../check/loginPage.jsp">로그인</a>
+        		<a class="dropdown-item" href="../memberInsert.jsp">회원가입</a>
       		</div>
     	</li>
   	</ul>
@@ -57,7 +59,7 @@
   	<li class="nav-item dropdown">
     	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">회원관리</a>
       	<div class="dropdown-menu">
-        	<a class="dropdown-item" href="../Action/logoutAction.jsp">로그아웃</a>
+        	<a class="dropdown-item" href="../check/logout.jsp">로그아웃</a>
       	</div>
     	</li>
   </ul>
@@ -99,11 +101,11 @@
 					Q <small><b>코로나19 이후 제일 많은 시간을 보내는 활동은 무엇인가요?</b></small>
 				</h4>
 				<br>
-				<p><b>영상시청(TV, 유튜브 등) <% double p1 = Math.round((answer1/ total) * 100); out.print(p1 + "%"); %></b></p>
-				<p><b>가족과 함께 <% double p2 = Math.round((answer2/ total) * 100); out.print(p2 + "%"); %></b></p>
-				<p><b>독서 <% double p3 = Math.round((answer3/ total) * 100); out.print(p3 + "%"); %></b></p>
-				<p><b>홈트레이닝 <% double p4 = Math.round((answer4/ total) * 100); out.print(p4 + "%"); %></b></p>
-				<p><b>기타 <% double p5 = Math.round((answer5/ total) * 100); out.print(p5 + "%"); %></b></p>
+				<p style="color:#5662A6;"><b>영상시청(TV, 유튜브 등) <% double p1 = Math.round((answer1/ total) * 100); out.print(p1 + "%"); %></b></p>
+				<p style="color:#4F698C;"><b>가족과 함께 <% double p2 = Math.round((answer2/ total) * 100); out.print(p2 + "%"); %></b></p>
+				<p style="color:#5662A6;"><b>독서 <% double p3 = Math.round((answer3/ total) * 100); out.print(p3 + "%"); %></b></p>
+				<p style="color:#4F698C;"><b>홈트레이닝 <% double p4 = Math.round((answer4/ total) * 100); out.print(p4 + "%"); %></b></p>
+				<p style="color:#5662A6;"><b>기타 <% double p5 = Math.round((answer5/ total) * 100); out.print(p5 + "%"); %></b></p>
 			</div>
 		</div>
 		<div class="media border p-3 mt-3">
@@ -112,11 +114,11 @@
 					Q <small><b>코로나19가 종식되면 가장 먼저 무엇을 하고 싶은가요?</b></small>
 				</h4>
 				<br>
-				<p><b>국내 여행 <% double p6 = Math.round((answer2_1/ total) * 100); out.print(p6 + "%"); %></b></p>
-				<p><b>해외 여행 <% double p7 = Math.round((answer2_2/ total) * 100); out.print(p7 + "%"); %></b></p>
-				<p><b>지인 모임 <% double p8 = Math.round((answer2_3/ total) * 100); out.print(p8 + "%"); %></b></p>
-				<p><b>영화, 공연 관람 <% double p9 = Math.round((answer2_4/ total) * 100); out.print(p9 + "%"); %></b></p>
-				<p><b>운동 <% double p10 = Math.round((answer2_5/ total) * 100); out.print(p10 + "%"); %></b></p>
+				<p style="color:#4F698C;"><b>국내 여행 <% double p6 = Math.round((answer2_1/ total) * 100); out.print(p6 + "%"); %></b></p>
+				<p style="color:#5662A6;"><b>해외 여행 <% double p7 = Math.round((answer2_2/ total) * 100); out.print(p7 + "%"); %></b></p>
+				<p style="color:#4F698C;"><b>지인 모임 <% double p8 = Math.round((answer2_3/ total) * 100); out.print(p8 + "%"); %></b></p>
+				<p style="color:#5662A6;"><b>영화, 공연 관람 <% double p9 = Math.round((answer2_4/ total) * 100); out.print(p9 + "%"); %></b></p>
+				<p style="color:#4F698C;"><b>운동 <% double p10 = Math.round((answer2_5/ total) * 100); out.print(p10 + "%"); %></b></p>
 			</div>
 			<img src="../res/daily.jpg" alt="John Doe"
 				class="ml-3 mt-3 rounded-circle" style="width: 230px;">

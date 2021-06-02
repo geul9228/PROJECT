@@ -21,25 +21,54 @@
 		location.href="./Tab/NoticeBoard.jsp"
 	</script>
 	<%}else{ %>
-	<nav class="navbar navbar-expand-sm">
-		<ul class="navbar-nav">
-			<li class="nav-item active">
-				<a class="nav-link" href="Main.jsp">Main</a>
-			</li>
-			<li class="nav-item">
-     			 <a class="nav-link" href="tab2.jsp">코로나 확진 현황</a>
-    		</li>
-    		<li class="nav-item">
-    			<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
-    		</li>
-			<%
-    		if(ID!=null){ %>
-    		<li class="nav-item ">
-    			<a class="nav-link float-right" href="./check/logout.jsp">로그아웃</a>
-    		</li>
-    		<%} %>
-		</ul>
-	</nav>
+<nav class="navbar navbar-expand-sm">
+  <!-- Brand -->
+  	<a font-weight: bold;" class="navbar-brand" href="../Main.jsp">COVID-19</a>
+
+  <!-- Links -->
+  	<ul class="navbar-nav">
+  		<li class="nav-item">
+      		<a class="nav-link" href="../Main.jsp">메인</a>
+    	</li>
+    	<li class="nav-item">
+     		<a class="nav-link" href="../Tab/tab2.jsp">코로나 확진 현황</a>
+    	</li>
+    	<li class="nav-item">
+    		<a class="nav-link" href="../Tab/NoticeBoard.jsp">국민의 소리</a>
+    	</li>
+    	 <li class="nav-item">
+      		<a class="nav-link" href="../survey.jsp">설문조사</a>
+    	</li>
+    </ul>
+	<!-- 로그인 안될시에 보이는 화면 -->
+    <%
+    	if(ID == null ){
+    %>
+    <!-- Dropdown -->
+    <ul class="navbar-nav navbar-right">
+    	<li class="nav-item dropdown">
+      		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">접속하기</a>
+      		<div class="dropdown-menu">
+        		<a class="dropdown-item" href="../login.jsp">로그인</a>
+        		<a class="dropdown-item" href="../memberInsert.jsp">회원가입</a>
+      		</div>
+    	</li>
+  	</ul>
+  <%
+  	}else{
+  %>
+  <ul class="navbar-nav navbar-right">
+  	<li class="nav-item dropdown">
+    	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">회원관리</a>
+      	<div class="dropdown-menu">
+        	<a class="dropdown-item" href= "./check/logout.jsp">로그아웃</a>
+      	</div>
+    	</li>
+  </ul>
+  <%
+  	}
+   %>
+</nav>
 	</header>
 	<div class="container">
 			<form method="get" action="writeAction.jsp">

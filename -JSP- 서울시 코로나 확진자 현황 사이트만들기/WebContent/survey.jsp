@@ -9,7 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="./css/style2.css"/>
+  <link rel="stylesheet" href="./css/Style.css"/>
 <title>Covid-19 설문조사</title>
 <script type="text/javascript">
 
@@ -45,16 +45,22 @@
 	%>
 	<nav class="navbar navbar-expand-sm">
   <!-- Brand -->
-  	<a style="color:#DFEBF2; font-weight: bold;" class="navbar-brand" href="Main.jsp">COVID-19</a>
+
+  	<a font-weight: bold;" class="navbar-brand" href="Main.jsp">COVID-19</a>
 
   <!-- Links -->
   	<ul class="navbar-nav">
   		<li class="nav-item">
       		<a class="nav-link" href="Main.jsp">메인</a>
     	</li>
-    	<li class="nav-item active">
-      		<a class="nav-link" href="./tab/NoticeBoard.jsp">게시판</a>
+    	<li class="nav-item">
+     		<a class="nav-link" href="./Tab/tab2.jsp">코로나 확진 현황</a>
     	</li>
+    	<li class="nav-item">
+    		<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
+    	</li>
+    	 <li class="nav-item">
+      		<a class="nav-link" href="survey.jsp">설문조사</a>
     </ul>
 	<!-- 로그인 안될시에 보이는 화면 -->
     <%
@@ -65,8 +71,8 @@
     	<li class="nav-item dropdown">
       		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">접속하기</a>
       		<div class="dropdown-menu">
-        		<a class="dropdown-item" href="login.jsp">로그인</a>
-        		<a class="dropdown-item" href="join.jsp">회원가입</a>
+        		<a class="dropdown-item" href="./check/loginPage.jsp">로그인</a>
+        		<a class="dropdown-item" href="memberInsert.jsp">회원가입</a>
       		</div>
     	</li>
   	</ul>
@@ -77,7 +83,7 @@
   	<li class="nav-item dropdown">
     	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">회원관리</a>
       	<div class="dropdown-menu">
-        	<a class="dropdown-item" href="./Action/logoutAction.jsp">로그아웃</a>
+        	<a class="dropdown-item" href= href="./check/logout.jsp">로그아웃</a>
       	</div>
     	</li>
   </ul>
@@ -85,7 +91,7 @@
   	}
    %>
 </nav>
-<!-- 로그인 양식 -->
+
 	<div class="container">
 		<div class="jumbotron mt-5">
 			<form method="post" action="./Action/surveyAction.jsp">
