@@ -1,3 +1,0 @@
-주소 : jsp.cfy5mbppsewi.us-east-2.rds.amazonaws.com
-아이디 : admin
-비밀번호 : 12345678
