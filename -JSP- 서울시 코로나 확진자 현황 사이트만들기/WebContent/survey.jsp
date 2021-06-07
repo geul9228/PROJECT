@@ -35,8 +35,9 @@
 <body>
 	<%
 		String userID = null;
-		if(session.getAttribute("userID")!=null){
-			userID=(String)session.getAttribute("userID");
+		if(session.getAttribute("ID")!=null){
+			userID=(String)session.getAttribute("ID");
+			
 		}
 		int pageNumber=1; //기본페이지
 		if(request.getParameter("pageNumber")!=null){
@@ -49,18 +50,22 @@
   	<a font-weight: bold;" class="navbar-brand" href="Main.jsp">COVID-19</a>
 
   <!-- Links -->
-  	<ul class="navbar-nav">
+  		<ul class="navbar-nav">
   		<li class="nav-item">
       		<a class="nav-link" href="Main.jsp">메인</a>
     	</li>
     	<li class="nav-item">
-     		<a class="nav-link" href="./Tab/tab2.jsp">코로나 확진 현황</a>
+     		<a class="nav-link" href="./Tab/graph.jsp">코로나 확진 현황</a>
+    	</li>
+    	<li class="nav-item">
+     		<a class="nav-link" href="vaccineInfo.jsp">백신 예방 접종</a>
     	</li>
     	<li class="nav-item">
     		<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
     	</li>
     	 <li class="nav-item">
       		<a class="nav-link" href="survey.jsp">설문조사</a>
+    	</li>
     </ul>
 	<!-- 로그인 안될시에 보이는 화면 -->
     <%
@@ -71,7 +76,7 @@
     	<li class="nav-item dropdown">
       		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">접속하기</a>
       		<div class="dropdown-menu">
-        		<a class="dropdown-item" href="./check/loginPage.jsp">로그인</a>
+        		<a class="dropdown-item" href="loginPage.jsp">로그인</a>
         		<a class="dropdown-item" href="memberInsert.jsp">회원가입</a>
       		</div>
     	</li>
@@ -83,7 +88,7 @@
   	<li class="nav-item dropdown">
     	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">회원관리</a>
       	<div class="dropdown-menu">
-        	<a class="dropdown-item" href= href="./check/logout.jsp">로그아웃</a>
+        	<a class="dropdown-item" href="check/logout.jsp">로그아웃</a>
       	</div>
     	</li>
   </ul>

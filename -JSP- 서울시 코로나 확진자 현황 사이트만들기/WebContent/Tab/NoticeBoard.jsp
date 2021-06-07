@@ -42,10 +42,13 @@
       		<a class="nav-link" href="../Main.jsp">메인</a>
     	</li>
     	<li class="nav-item">
-     		<a class="nav-link" href="../Tab/tab2.jsp">코로나 확진 현황</a>
+     		<a class="nav-link" href="graph.jsp">코로나 확진 현황</a>
     	</li>
     	<li class="nav-item">
-    		<a class="nav-link" href="../Tab/NoticeBoard.jsp">국민의 소리</a>
+     		<a class="nav-link" href="../vaccineInfo.jsp">백신 예방 접종</a>
+    	</li>
+    	<li class="nav-item">
+    		<a class="nav-link" href="NoticeBoard.jsp">국민의 소리</a>
     	</li>
     	 <li class="nav-item">
       		<a class="nav-link" href="../survey.jsp">설문조사</a>
@@ -84,7 +87,7 @@
 		<%if(ID==null){%>
 			<script>
 			alert("로그인이 필요합니다.")
-			location.href="../check/loginPage.jsp"
+			location.href="../loginPage.jsp"
 			</script>
 			<% }else{ %>
 			<div class="container" id = "reload">

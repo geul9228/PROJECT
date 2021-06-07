@@ -19,6 +19,7 @@ response.setDateHeader("Expires",0);
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Imagetoolbar" content="no" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -47,19 +48,23 @@ body {
   <a class="navbar-brand" href="Main.jsp">COVID-19</a>
 
   <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="Main.jsp">메인</a>
-    </li>
-    <li class="nav-item">
-     	<a class="nav-link" href="./Tab/tab2.jsp">코로나 확진 현황</a>
-    </li>
-    <li class="nav-item">
-    	<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
-    </li>
-    <li class="nav-item">
+  	<ul class="navbar-nav">
+  		<li class="nav-item">
+      		<a class="nav-link" href="Main.jsp">메인</a>
+    	</li>
+    	<li class="nav-item">
+     		<a class="nav-link" href="./Tab/graph.jsp">코로나 확진 현황</a>
+    	</li>
+    	<li class="nav-item">
+     		<a class="nav-link" href="vaccineInfo.jsp">백신 예방 접종</a>
+    	</li>
+    	<li class="nav-item">
+    		<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
+    	</li>
+    	 <li class="nav-item">
       		<a class="nav-link" href="survey.jsp">설문조사</a>
-    </li>
+    	</li>
+    </ul>
 
     <!-- Dropdown -->
     <li class="nav-item dropdown">
@@ -67,7 +72,7 @@ body {
         접속하기
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="check/loginPage.jsp">로그인</a>
+        <a class="dropdown-item" href="loginPage.jsp">로그인</a>
         <a class="dropdown-item" href="memberInsert.jsp">회원가입</a>
       </div>
     </li>
@@ -141,7 +146,7 @@ body {
 	       //확인 버튼 클릭시
 	       $('#OK').click(function(){
 	             if ( !$('#answer').val() ) {
-	                    alert('이미지에 보이는 숫자를 입력해 주세요.');
+	            	 swal("실패!", "이미지안의 문자를 입력해주세요", "error");
 	             } else {
 	                    $.ajax({
 	                           url: './check/captchaSubmit.jsp',
@@ -155,7 +160,7 @@ body {
 	                    });
 	             }
 	             if (imgcheck=="false") {
-	        			alert("상자안의 숫자가 틀렸습니다.")
+	            	 swal("실패!", "문자가 일치하지 않습니다.", "error");
 	        			return false;
 	        		}
 	             
@@ -191,13 +196,13 @@ body {
 					btn = document.getElementById('OK');
 				} else {
 					$("#id_check").text("사용가능한 아이디입니다");
-					$("#id_check").css("color", "red");
+					$("#id_check").css("color", "green");
 					$("#OK").attr("disabled", false);
 					check = 1;
 				}
 			},
 			error : function() {
-				alert("수행중에 오류가 발생하였습니다.")
+				swal("오류가 발생하였습니다", "작업을 다시 수행해 주세요", "error");
 			}
 		});
 	});
@@ -217,7 +222,7 @@ body {
 	$("#inputPwd2").keyup(function() {
 		if ($("#inputPwd2").val() == $("#inputPwd").val()) {
 			$("#pw_check").text("비밀번호가 일치합니다.");
-			$("#pw_check").css("color", "red");
+			$("#pw_check").css("color", "green");
 		} else {
 			$("#pw_check").text("비밀번호가 일치하지않습니다.");
 			$("#pw_check").css("color", "red");
@@ -229,34 +234,34 @@ body {
 	$('#OK').click(function() {
 
 		if ($('#inputId').val() == "") {
-			alert("ID를 입력하세요")
+			swal("실패!", "ID를 입력하세요", "error");
 			return false;
 		}
 
 		if ($('#inputName').val() == "") {
-			alert("이름을 입력하세요")
+			swal("실패!", "이름을 입력하세요", "error");
 			return false;
 		}
 
 		if ($('#inputId').val() == $('#inputPwd').val()) {
-			alert("아이디와 비밀번호가 동일합니다.")
+			swal("실패!", "아이디와 비밀번호가 동일합니다.", "error");
 			return false;
 		}
 
 		if ($('#inputPwd').val() == "") {
-			alert("비밀번호를 입력하세요")
+			swal("실패!", "비밀번호를 입력하세요!", "error");
 			return false;
 		}
 		if ($('#inputPwd2').val() == "") {
-			alert("비밀번호를 입력하세요")
+			swal("실패!", "비밀번호를 입력하세요!", "error");
 			return false;
 		}
 		if ($('#inputPwd').val() != $('#inputPwd2').val()) {
-			alert("비밀번호가 일치하지않습니다.")
+			swal("실패!", "비밀번호가 일치하지 않습니다.", "error");
 			return false;
 		}
 		if ($('#inputPhone').val() == "") {
-			alert("전화번호를 입력하세요")
+			swal("실패!", "전화번호를 입력하세요!", "error");
 			return false;
 		}
 

@@ -16,8 +16,8 @@
 <body>
 	<%
 		String userID = null;
-		if(session.getAttribute("userID")!=null){
-			userID=(String)session.getAttribute("userID");
+		if(session.getAttribute("ID")!=null){
+			userID=(String)session.getAttribute("ID");
 		}
 	%>
 	<nav class="navbar navbar-expand-sm">
@@ -29,7 +29,7 @@
       		<a class="nav-link" href="../Main.jsp">메인</a>
     	</li>
     	<li class="nav-item">
-     		<a class="nav-link" href="../Tab/tab2.jsp">코로나 확진 현황</a>
+     		<a class="nav-link" href="../Tab/graph.jsp">코로나 확진 현황</a>
     	</li>
     	<li class="nav-item">
     		<a class="nav-link" href="../Tab/NoticeBoard.jsp">국민의 소리</a>
@@ -47,7 +47,7 @@
     	<li class="nav-item dropdown">
       		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">접속하기</a>
       		<div class="dropdown-menu">
-        		<a class="dropdown-item" href="../check/loginPage.jsp">로그인</a>
+        		<a class="dropdown-item" href="../loginPage.jsp">로그인</a>
         		<a class="dropdown-item" href="../memberInsert.jsp">회원가입</a>
       		</div>
     	</li>

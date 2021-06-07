@@ -11,33 +11,38 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- style 적용 css 파일 생성했습니다 -->
 <link rel="stylesheet" href="/JSP/css/Style.css"/>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <header>
 	<% String ID= (String)session.getAttribute("ID");%>
 	<%if(ID==null){ %>
-	<script>
-		alert("로그인을 해야합니다.")
-		location.href="./Tab/NoticeBoard.jsp"
-	</script>
-	<%}else{ %>
+<script>
+swal("오류! 로그인을 해야합니다.").then((value) => {
+	location.href="loginPage.jsp";
+});
+</script>
+<%}else{ %>	
 <nav class="navbar navbar-expand-sm">
   <!-- Brand -->
-  	<a font-weight: bold;" class="navbar-brand" href="../Main.jsp">COVID-19</a>
+  	<a style="font-weight: bold;" class="navbar-brand" href="./Main.jsp">COVID-19</a>
 
   <!-- Links -->
   	<ul class="navbar-nav">
   		<li class="nav-item">
-      		<a class="nav-link" href="../Main.jsp">메인</a>
+      		<a class="nav-link" href="Main.jsp">메인</a>
     	</li>
     	<li class="nav-item">
-     		<a class="nav-link" href="../Tab/tab2.jsp">코로나 확진 현황</a>
+     		<a class="nav-link" href="./Tab/graph.jsp">코로나 확진 현황</a>
     	</li>
     	<li class="nav-item">
-    		<a class="nav-link" href="../Tab/NoticeBoard.jsp">국민의 소리</a>
+     		<a class="nav-link" href="vaccineInfo.jsp">백신 예방 접종</a>
+    	</li>    	
+    	<li class="nav-item">
+    		<a class="nav-link" href="./Tab/NoticeBoard.jsp">국민의 소리</a>
     	</li>
     	 <li class="nav-item">
-      		<a class="nav-link" href="../survey.jsp">설문조사</a>
+      		<a class="nav-link" href="survey.jsp">설문조사</a>
     	</li>
     </ul>
 	<!-- 로그인 안될시에 보이는 화면 -->
@@ -71,7 +76,7 @@
 </nav>
 	</header>
 	<div class="container">
-			<form method="get" action="writeAction.jsp">
+			<form method="get" action="./Action/writeAction.jsp">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 					<thead>
 						<tr>
@@ -97,12 +102,14 @@
 </body>
 <script type="text/javascript">
 //텍스트영역의 스크롤바를 없애고 자동으로 늘려주는 역할
-	$('#content').keypress(function(){
+	$('#content').keydown(function(key){
 		var txtArea = $('#content');
+		if(key.keyCode == 13){
 		if (txtArea) {
 		    txtArea.each(function(){
 		        $(this).height(this.scrollHeight);
 		    });
+		}
 		}
 	})
 	

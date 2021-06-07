@@ -8,5 +8,5 @@ del.delete(num);%>
 
 <script>
 alert("삭제완료되었습니다.")
-location.href="./Tab/NoticeBoard.jsp"
+location.href="../Tab/NoticeBoard.jsp"
 </script>

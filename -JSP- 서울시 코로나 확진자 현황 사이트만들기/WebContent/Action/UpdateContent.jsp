@@ -11,5 +11,5 @@ update.Update(num,content);
 <script>
 history.replaceState({}, null, location.pathname); //넘겨받은 파라메터를 숨기는 구문
 alert("수정완료")
-location.href="./Tab/NoticeBoard.jsp"
+location.href="../Tab/NoticeBoard.jsp"
 </script>
