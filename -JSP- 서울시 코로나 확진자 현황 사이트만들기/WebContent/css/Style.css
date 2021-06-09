@@ -31,8 +31,8 @@ a:hover{color:#6CCED9;}
 .active {
     	color: #6CCED9;
 	}
+	
 .img{
-   		position: relative;
     	margin-left: auto;
     	margin-right:auto;
     	background-image: url(../res/main.jpg);                                                               
@@ -41,7 +41,6 @@ a:hover{color:#6CCED9;}
     
   }
 .img-2{
-		position: relative;
     	margin-left: auto;
     	margin-right:auto;
     	background-image: url(../res/hoddy.jpg);                                                               
@@ -49,9 +48,23 @@ a:hover{color:#6CCED9;}
     	width: 950px;
 }
 
+
+  .img_action{
+    	margin-left: auto;
+    	margin-right:auto;    	                                                              
+    	height: auto;
+    	width: auto;
+  }
+   .img_action2{
+    	margin-left: auto;
+    	margin-right:auto;    	                                                              
+    	height: auto;
+    	width: 1055px;
+    
+  }
+
 .img-cover{
      	position: absolute;
-     	height: 100%;
      	width: 100%;
      /*background-color: rgba(0, 0, 0, 0.7);*/                                                                 
      	z-index:1;

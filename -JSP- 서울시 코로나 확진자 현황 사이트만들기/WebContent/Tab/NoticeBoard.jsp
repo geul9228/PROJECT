@@ -13,6 +13,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- style 적용 css 파일 생성했습니다 -->
 <link rel="stylesheet" href="/JSP/css/Style.css"/>
 <%String ID = (String)session.getAttribute("ID");%>
@@ -58,6 +59,11 @@
     <%
     	if(ID == null ){
     %>
+   			 <script>
+			swal("오류!","로그인을 해야 합니다.","error").then((value) => {
+				location.href="../loginPage.jsp"
+			});
+			</script>
     <!-- Dropdown -->
     <ul class="navbar-nav navbar-right">
     	<li class="nav-item dropdown">
@@ -84,12 +90,7 @@
    %>
 </nav>
 	</header>
-		<%if(ID==null){%>
-			<script>
-			alert("로그인이 필요합니다.")
-			location.href="../loginPage.jsp"
-			</script>
-			<% }else{ %>
+			
 			<div class="container" id = "reload">
 				<div class="row">
 					<table class="table table-hover" style="margin-top:50px;">
@@ -129,7 +130,6 @@
 				</div>
 				<div class="form-row float-right"><a href="../write.jsp" class="btn btn-primary pull-right" style="float: right;">글쓰기</a></div>
 			</div>
-			<%}%>
 			</div>
 		    
 </body>

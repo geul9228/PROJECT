@@ -9,7 +9,6 @@ String Comment = request.getParameter("Comment");
 
 CommentDB CDB = new CommentDB();
 CDB.Comment(id,num,Comment);
-
 %>
 
 

@@ -18,6 +18,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- style 적용 css 파일 생성했습니다 -->
 <link rel="stylesheet" href="./css/Style.css"/>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,7 +121,7 @@
 			
 		</div>
     					
-</body>s
+</body>
 
 <script type="text/javascript">
 	//텍스트영역의 스크롤바를 없애고 자동으로 늘려주는 역할
@@ -130,15 +131,17 @@
 	           $(this).height(this.scrollHeight);
 	       });
 	   }
-	//엔터 입력시에만 텍스트영역이 늘어남
-	$('#content').keypress(function(){
-		var txtArea = $('#content');
-		if (txtArea) {
-		    txtArea.each(function(){
-		        $(this).height(this.scrollHeight);
-		    });
-		}
-	})
+	 //텍스트영역의 스크롤바를 없애고 자동으로 늘려주는 역할
+		$('#content').keydown(function(key){
+			var txtArea = $('#content');
+			if(key.keyCode == 13){
+			if (txtArea) {
+			    txtArea.each(function(){
+			        $(this).height(this.scrollHeight);
+			    });
+			}
+			}
+		})
    
     //삭제버튼 이벤트
     $('#delete').click(function(){
@@ -161,14 +164,24 @@
 			$.ajax({
                 url: './Action/Comment.jsp',
                 type: 'GET',
-                dataType: 'json',
-                data: {id:id,num:num,Comment:Comment},
+                dataType: 'text',
+                data: {
+                	id:id,
+                	num:num,
+                	Comment:Comment
+                	},
                 success: function(ret) {
-                	alert("입력성공")
+                    swal("댓글입력 성공!","","success").then((value) => {
+                    	location.reload()
+                	});
+                },
+                error: function(){
+                	swal("통신실패", "다시실행해주세요", "error").then((value) => {
+                		location.reload()
+            		});
                 }
     		})
 		}
-    		location.reload()
     })
    	
    function CommentDelete(CommentNum){
@@ -176,15 +189,23 @@
 	    $.ajax({
             url: './Action/CommentDelete.jsp',
             type: 'POST',
-            dataType: 'json',
-            data: {num:num,CommentNum:CommentNum},
+            dataType: 'text',
+            data: {
+            	num:num,
+            	CommentNum:CommentNum
+            	},
             success: function(ret) {
-            	alert("삭제완료")
+            	swal("댓글삭제 성공!","","success").then((value) => {
+            		location.reload()
+        		});
+            },
+            error: function(){
+            	swal("통신실패", "다시실행해주세요", "error").then((value) => {
+            		location.reload()
+        		});
             }
    		 })
-    location.reload()
   }
-  
     
 </script>
 </html>

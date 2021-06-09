@@ -8,8 +8,8 @@ import java.sql.ResultSet;
 public class DB {
 	public static Connection getConnection() {
 		Connection conn=null;
-		String url="jdbc:oracle:thin:@192.168.0.104:1521:XE";
-		String id="AI";
+		String url="jdbc:oracle:thin:@localhost:1521:XE";
+		String id="HG";
 		String pw="1234";
 		String driver="oracle.jdbc.driver.OracleDriver";
 		try {

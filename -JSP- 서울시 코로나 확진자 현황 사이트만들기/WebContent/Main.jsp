@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="./css/Style.css"/>
 <link rel="stylesheet" href="./css/StatusBoard.css" />
 
+
+
 <script type="text/javascript">
 	<%String ID = (String)session.getAttribute("ID");%>
 	history.replaceState({}, null, location.pathname); //넘겨받은 파라메터를 숨기는 구문
@@ -77,7 +79,7 @@
         </div>
         <div class="img-cover"></div>
     </div>
-
+<div class="img_action2" style="margin-left: auto;margin-right:auto;">
 	<div class="liveNumOuter ml-5 mr-5">
 			<div class="liveNum_today_new">
 				<strong class="tit">일일확진자</strong>
@@ -127,6 +129,10 @@
 				</ul>
 			</div>
 	</div>
+</div>
 
+<div class="img_action" style="margin-left: 0px;">
+	<img style="margin-left: auto; margin-right: auto; display: block;" alt="행동수칙" src="./res/행동수칙.jpg">
+	</div>
 </body>
 </html>

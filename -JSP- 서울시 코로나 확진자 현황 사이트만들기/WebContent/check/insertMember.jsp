@@ -11,13 +11,17 @@
 	MemberInsert Minsert = new MemberInsert();
 	int ret = Minsert.insert(ID,PWD,NAME,PHONE);
 %>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
+window.onload = function(){
 	if(<%=ret%>==1){
-	alert("회원가입이 완료되었습니다.")
-	location.href='../Main.jsp'
+		swal("성공","회원가입이 완료되었습니다.","success").then((value) => {
+			location.href='../Main.jsp'
+		});
+	}else{
+		swal("실패","회원가입에 실패하였습니다.","error").then((value) => {
+			location.href='../Main.jsp'
+		});
 	}
-	else{
-		alert("회원가입에 실패하였습니다.")
-	}
+}
 </script>

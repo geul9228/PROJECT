@@ -57,4 +57,10 @@
 			</form>
 		</div>
 </body>
+<script type="text/javascript">
+$('#member').click(function(){
+	location.href="memberInsert.jsp"
+})
+
+</script>
 </html>

@@ -9,17 +9,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- style 적용 css 파일 생성했습니다 -->
 <link rel="stylesheet" href="/JSP/css/Style.css"/>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body>
 <header>
 	<% String ID= (String)session.getAttribute("ID");%>
 	<%if(ID==null){ %>
 <script>
-swal("오류! 로그인을 해야합니다.").then((value) => {
-	location.href="loginPage.jsp";
+swal("오류!","로그인을 해야 합니다.","error").then((value) => {
+	(location.href="loginPage.jsp")
 });
 </script>
 <%}else{ %>	

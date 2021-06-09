@@ -67,15 +67,14 @@ body {
     </ul>
 
     <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        접속하기
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="loginPage.jsp">로그인</a>
-        <a class="dropdown-item" href="memberInsert.jsp">회원가입</a>
-      </div>
-    </li>
+     <ul class="navbar-nav navbar-right">
+    	<li class="nav-item dropdown">
+      		<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">접속하기</a>
+      		<div class="dropdown-menu">
+        		<a class="dropdown-item" href="loginPage.jsp">로그인</a>
+        		<a class="dropdown-item" href="memberInsert.jsp">회원가입</a>
+      		</div>
+    	</li>
   </ul>
 </nav>
 <div class="jumbotron ">
